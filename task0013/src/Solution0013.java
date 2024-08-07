@@ -1,14 +1,13 @@
 package task0013.src;
 
-import javax.swing.*;
 import java.util.HashMap;
 
 public class Solution0013 {
 
     public static void main(String[] args) {
-        romanToInt("III");
-        romanToInt("LVIII");
-        romanToInt("MCMXCIV");
+        System.out.println(""+romanToInt("III"));
+        System.out.println(""+romanToInt("MCMXCIV"));
+        System.out.println(""+romanToInt("LVIII"));
     }
 
     public static int romanToInt(String s) {
@@ -16,7 +15,6 @@ public class Solution0013 {
 
         HashMap<String, String> prev = new HashMap<>();
         HashMap<String, Integer> diff = new HashMap<>();
-        HashMap<String, String> next = new HashMap<>();
         HashMap<String, Integer> val = new HashMap<>();
 
         val.put("I",1);
@@ -47,16 +45,16 @@ public class Solution0013 {
               nextChar = String.valueOf(s.charAt(j));
           } else {
               nextChar = "";
-          };
+          }
 
-          int charVal = val.get(currChar).intValue();
+          int charVal = val.get(currChar);
           String prevStr = prev.get(currChar);
 
-          if ( prevStr != null & nextChar != "" ){
+          if ( prevStr != null & nextChar.equals("") ){
              if ( nextChar.equals( String.valueOf( prevStr.charAt(0) ) )
                 | nextChar.equals( String.valueOf( prevStr.charAt(1) ) ) ) {
 
-                 charVal = diff.get(nextChar).intValue();
+                 charVal = diff.get(nextChar);
                  i = i + 1;
 
               }
@@ -68,7 +66,6 @@ public class Solution0013 {
           i = i + 1;
         }
 
-        System.out.println(""+res);
         return res;
     }
 
