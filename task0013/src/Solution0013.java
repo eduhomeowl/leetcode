@@ -5,9 +5,9 @@ import java.util.HashMap;
 public class Solution0013 {
 
     public static void main(String[] args) {
-        System.out.println(""+romanToInt("III"));
+//        System.out.println(""+romanToInt("III"));
         System.out.println(""+romanToInt("MCMXCIV"));
-        System.out.println(""+romanToInt("LVIII"));
+//        System.out.println(""+romanToInt("LVIII"));
     }
 
     public static int romanToInt(String s) {
@@ -50,7 +50,7 @@ public class Solution0013 {
           int charVal = val.get(currChar);
           String prevStr = prev.get(currChar);
 
-          if ( prevStr != null & nextChar.equals("") ){
+          if ( prevStr != null & !nextChar.equals("") ){
              if ( nextChar.equals( String.valueOf( prevStr.charAt(0) ) )
                 | nextChar.equals( String.valueOf( prevStr.charAt(1) ) ) ) {
 
