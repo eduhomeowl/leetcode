@@ -6,8 +6,52 @@ public class Solution0013 {
 
     public static void main(String[] args) {
 //        System.out.println(""+romanToInt("III"));
-        System.out.println(""+romanToInt("MCMXCIV"));
+//        System.out.println(""+romanToInt("MCMXCIV"));
 //        System.out.println(""+romanToInt("LVIII"));
+
+        System.out.println(""+romanToInt_02("III"));
+        System.out.println(""+romanToInt_02("MCMXCIV"));
+        System.out.println(""+romanToInt_02("LVIII"));
+
+    }
+
+    public static int romanToInt_02(String s) {
+
+        HashMap<Character, Integer> val = new HashMap<>();
+
+        val.put('I',1);
+        val.put('V',5);
+        val.put('X',10);
+        val.put('L',50);
+        val.put('C',100);
+        val.put('D',500);
+        val.put('M',1000);
+
+        int res = 0;
+
+        if (!s.equals("")) {
+
+            int length = s.length();
+            Character currChar = s.charAt(length-1);
+            int prevVal = val.get(currChar);
+            res = prevVal;
+
+            for ( int i = length - 2; i>=0; i-- ){
+                currChar = s.charAt(i);
+                int currVal = val.get(currChar);
+
+                if (currVal >= prevVal ){
+                    res = res + currVal;
+                } else {
+                    res = res - currVal;
+                }
+
+                prevVal = currVal;
+            }
+
+        }
+
+        return res;
     }
 
     public static int romanToInt(String s) {
